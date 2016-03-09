@@ -6,3 +6,8 @@
     - install
     - plugin
     - kick-start
+  vars:
+    tdagent_plugins:
+      -
+      -
+      -

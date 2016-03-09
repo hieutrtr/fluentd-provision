@@ -1,0 +1,4 @@
+- name: copy new td-agent.conf from role's default
+  copy: src=../files/td-agent.conf  dest=/etc/td-agent/td-agent.conf
+  notify:
+    - restart td-agent
