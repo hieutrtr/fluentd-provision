@@ -1,3 +1,11 @@
+- name: gather facts kafka-server
+  hosts: kafka-server
+  sudo: yes
+  gather_facts: yes
+  remote_user: ubuntu
+  tasks:
+    set_up:
+
 - hosts: all
   sudo: yes
   gather_facts: yes
@@ -8,6 +16,6 @@
     - kick-start
   vars:
     tdagent_plugins:
-      -
-      -
-      -
+      - fluent-plugin-extract_query_params
+      - fluent-plugin-s3
+      - fluent-plugin-kafka

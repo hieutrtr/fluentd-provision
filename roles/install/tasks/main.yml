@@ -24,12 +24,3 @@
   with_items:
     - libcurl4-gnutls-dev
     - build-essential
-
-
-# - name: set INIT status and start
-#   service: name=td-agent state=started enabled=yes
-#   when: tdagent_use_service|bool
-#
-# - name: set INIT status (SysV style)
-#   shell: update-rc.d td-agent defaults
-#   when: not tdagent_use_service|bool

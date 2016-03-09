@@ -1,0 +1,28 @@
+<source>
+  type tail
+  format none
+  path /log/test.log
+  tag chat.test
+</source>
+
+<source>
+  type forward
+  port 24224
+  tag chat.test
+</source>
+
+<match chat.*>
+  type copy
+  <store>
+    type kafka_buffered
+    brokers {% for item in groups['kafka-server'] %}{{ hostvars[item].ansible_default_ipv4.address }}:9092{% if not loop.last %},{% endif %}{% endfor %}
+
+    buffer_type memory
+    buffer_path /var/log/td-agent/chat_log*.buffer
+    default_topic chat_log
+    flush_interval 120s
+    output_data_type json
+    output_include_time true
+    compression_codec gzip
+  </store>
+</match>

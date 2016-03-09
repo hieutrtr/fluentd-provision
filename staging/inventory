@@ -1,1 +1,14 @@
 
+[fluentd]
+<fluentd-host>
+
+[fluentd:vars]
+ansible_ssh_private_key_file=<key-pem-path>
+
+[kafka-server]
+<kafka-host-1>
+<kafka-host-2>
+<kafka-host-3>
+
+[kafka-server:vars]
+ansible_ssh_private_key_file=<key-pem-path>
